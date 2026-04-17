@@ -1,5 +1,5 @@
 export interface JobApplication {
-    __id: string;
+    _id: string;
     company: string;
     position: string;
     location?: string;
@@ -14,7 +14,7 @@ export interface JobApplication {
 }
 
 export interface Column {
-    __id: string;
+    _id: string;
     name: string;
     boardId: string;
     order: number;
@@ -22,7 +22,7 @@ export interface Column {
 }
 
 export interface Board {
-    __id: string;
+    _id: string;
     name: string;
     columns: Column[];
 }

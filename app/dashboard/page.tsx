@@ -1,4 +1,6 @@
+import KanbanBoard from "@/components/KanbanBoard";
 import { getSession } from "@/lib/auth/auth";
+import connectToDatabase from "@/lib/db";
 import { Board } from "@/lib/models";
 import { redirect } from "next/navigation";
 
@@ -9,11 +11,14 @@ export default async function Dashboard() {
         redirect("/sign-in");
     }
 
-    const board = await Board.findOne({
-        userId: session.user.id,
-        name: "Job Hunt",
-    });
+    await connectToDatabase();
 
+    const board = await Board.findOne({
+         name: "Job Hunt", 
+         userId: session.user.id 
+        }).populate({
+             path: "columns" 
+        });
 
     return (
         <div className="min-h-screen bg-white">
@@ -26,6 +31,7 @@ export default async function Dashboard() {
                         Track your job applications
                     </p>
                 </div>
+                <KanbanBoard board={JSON.parse(JSON.stringify(board))} userId={session.user.id} />
             </div>
         </div>
     );
