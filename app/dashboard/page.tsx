@@ -3,22 +3,37 @@ import { getSession } from "@/lib/auth/auth";
 import connectToDatabase from "@/lib/db";
 import { Board } from "@/lib/models";
 import { redirect } from "next/navigation";
+import { Suspense } from "react";
 
-export default async function Dashboard() {
+async function getBoard(userId: string) {
+    'use cache';
+     await connectToDatabase();
+
+    const boardDoc = await Board.findOne({
+         name: "Job Hunt", 
+         userId: userId
+        }).populate({
+            path: "columns",
+            populate: {
+                path: "jobApplications",
+            }
+        });
+
+    if (!boardDoc) {
+        return null;
+    }
+
+    const board = JSON.parse(JSON.stringify(boardDoc));
+    return board;
+}
+
+async function DashboardPage() {
     const session = await getSession();
+    const board = await getBoard(session?.user.id ?? "");
 
     if (!session?.user) {
         redirect("/sign-in");
     }
-
-    await connectToDatabase();
-
-    const board = await Board.findOne({
-         name: "Job Hunt", 
-         userId: session.user.id 
-        }).populate({
-             path: "columns" 
-        });
 
     return (
         <div className="min-h-screen bg-white">
@@ -31,8 +46,17 @@ export default async function Dashboard() {
                         Track your job applications
                     </p>
                 </div>
-                <KanbanBoard board={JSON.parse(JSON.stringify(board))} userId={session.user.id} />
+                <KanbanBoard board={board} userId={session.user.id} />
             </div>
         </div>
     );
+}
+
+{/* We wrap the DashboardPage in a Suspense component to handle loading states with cache*/}
+export default async function Dashboard() {
+    return (
+        <Suspense fallback={<div>Loading...</div>}>
+            <DashboardPage />
+        </Suspense>
+    )
 }
