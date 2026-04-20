@@ -11,10 +11,10 @@ export default function Home() {
       {/** Hero Section */}
       <section className="container mx-auto px-4 py-32">
         <div className="mx-auto max-w-4xl text-center">
-          <h1 className="mb-6 text-6xl font-bold text-foreground">
+          <h1 className="mb-6 text-4xl font-bold leading-tight text-foreground sm:text-5xl lg:text-6xl">
             A better way to track your job applications.
           </h1>
-          <p className="text-muted-foreground mb-10 text-xl">
+          <p className="text-muted-foreground mb-10 text-base sm:text-xl">
             Capture, organize, and manage your job search in one place.
           </p>
           <div className="flex flex-col items-center gap-4">

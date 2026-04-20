@@ -10,21 +10,21 @@ export default function ImageTabs() {
             <div className="container mx-auto px-4">
                 <div>
                     {/* Tabs */}
-                    <div className="flex gap-2 justify-center mb-8">
+                    <div className="mb-8 flex flex-wrap justify-center gap-2">
                         {/* Set active tab state when clicked */}
-                        <Button onClick={() => setActiveTab("organize")} className={`rounded-lg px-6 py-3 text-sm font-medium transition-colors ${activeTab === "organize"
+                        <Button onClick={() => setActiveTab("organize")} className={`h-auto rounded-lg px-3 py-2 text-xs font-medium leading-tight transition-colors sm:px-6 sm:py-3 sm:text-sm ${activeTab === "organize"
                                 ? "bg-primary text-white"
                                 : "bg-gray-100 text-gray-700 hover:bg-gray-200"
                             }`}>
                             Organize Applications
                         </Button>
-                        <Button onClick={() => setActiveTab("hired")} className={`rounded-lg px-6 py-3 text-sm font-medium transition-colors ${activeTab === "hired"
+                        <Button onClick={() => setActiveTab("hired")} className={`h-auto rounded-lg px-3 py-2 text-xs font-medium leading-tight transition-colors sm:px-6 sm:py-3 sm:text-sm ${activeTab === "hired"
                                 ? "bg-primary text-white"
                                 : "bg-gray-100 text-gray-700 hover:bg-gray-200"
                             }`}>
                             Get Hired
                         </Button>
-                        <Button onClick={() => setActiveTab("boards")} className={`rounded-lg px-6 py-3 text-sm font-medium transition-colors ${activeTab === "boards"
+                        <Button onClick={() => setActiveTab("boards")} className={`h-auto rounded-lg px-3 py-2 text-xs font-medium leading-tight transition-colors sm:px-6 sm:py-3 sm:text-sm ${activeTab === "boards"
                                 ? "bg-primary text-white"
                                 : "bg-gray-100 text-gray-700 hover:bg-gray-200"
                             }`}>
