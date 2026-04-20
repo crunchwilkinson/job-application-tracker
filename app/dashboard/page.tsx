@@ -52,10 +52,44 @@ async function DashboardPage() {
     );
 }
 
+function DashboardSkeleton() {
+    return (
+        <div className="min-h-screen bg-white">
+            <div className="container mx-auto p-6">
+                <div className="mb-6 space-y-3">
+                    <div className="h-9 w-64 animate-pulse rounded-md bg-gray-200" />
+                    <div className="h-5 w-48 animate-pulse rounded-md bg-gray-200" />
+                </div>
+                <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
+                    {Array.from({ length: 3 }).map((_, idx) => (
+                        <div
+                            key={idx}
+                            className="rounded-lg border border-gray-200 bg-white p-4"
+                        >
+                            <div className="mb-4 h-6 w-28 animate-pulse rounded-md bg-gray-200" />
+                            <div className="space-y-3">
+                                {Array.from({ length: 3 }).map((__, cardIdx) => (
+                                    <div
+                                        key={cardIdx}
+                                        className="rounded-md border border-gray-200 p-4"
+                                    >
+                                        <div className="mb-2 h-4 w-3/4 animate-pulse rounded bg-gray-200" />
+                                        <div className="h-3 w-1/2 animate-pulse rounded bg-gray-200" />
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    ))}
+                </div>
+            </div>
+        </div>
+    );
+}
+
 {/* We wrap the DashboardPage in a Suspense component to handle loading states with cache*/}
 export default async function Dashboard() {
     return (
-        <Suspense fallback={<div>Loading...</div>}>
+        <Suspense fallback={<DashboardSkeleton />}>
             <DashboardPage />
         </Suspense>
     )
