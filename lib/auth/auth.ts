@@ -4,9 +4,11 @@ import { MongoClient } from "mongodb";
 import { headers } from "next/headers";
 import { redirect } from "next/navigation";
 import { initializeUserBoard } from "../init-user-board";
+import connectToDatabase from "../db";
 
-const client = new MongoClient(process.env.MONGODB_URI!);
-const db = client.db(); // Use the default database specified in the URI
+const mongooseInstance = await connectToDatabase();
+const client = mongooseInstance.connection.getClient();
+const db = client.db(); 
 
 export const auth = betterAuth({
     database: mongodbAdapter(db, {
