@@ -7,6 +7,7 @@ import { signIn } from "@/lib/auth/auth-cient";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import Image from "next/image";
 
 export default function SignIn() {
     const [email, setEmail] = useState("");
@@ -41,9 +42,9 @@ export default function SignIn() {
         }
     }
     return (
-        <div className="flex min-h-[calc(100vh-4rem)] items-center justify-center bg-white p-4">
+        <div className="flex gap-2 min-h-[calc(100vh-4rem)] items-center justify-center bg-white p-4">
             <Card className="w-full max-w-md border-gray-200 shadow-lg">
-                <CardHeader className="space-y-1">
+                <CardHeader className="space-y-1 md:mb-5">
                     <CardTitle className="text-2xl font-bold text-black">
                         Sign In
                     </CardTitle>
@@ -103,7 +104,19 @@ export default function SignIn() {
                     </CardFooter>
                 </form>
             </Card>
+            {/* Right Side: Dashboard Preview */}
+            <div className="relative hidden md:block w-full max-w-md flex-1 overflow-hidden rounded-xl border border-gray-200 shadow-lg min-h-88">
+                <Image
+                    src="/hero-images/hero2.png"
+                    alt="Dashboard Preview"
+                    fill
+                    className="object-contain object-center"
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                    priority
+                />
+            </div>
         </div>
     );
 }
+                          
                           
