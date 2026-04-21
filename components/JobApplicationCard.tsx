@@ -65,6 +65,10 @@ export default function JobApplicationCard({ job, columns, dragHandleProps }: Jo
             const result = await updateJobApplication(job._id, {
                 columnId: newColumnId,
             });
+
+            if (result.error) {
+                console.error("Failed to move job application:", result.error);
+            }
         } catch (err) {
             console.error("Failed to move job application:", err);
         }

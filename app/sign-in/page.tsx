@@ -12,6 +12,7 @@ import Image from "next/image";
 export default function SignIn() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [isPreviewLoading, setIsPreviewLoading] = useState(true);
 
     const [error, setError] = useState("");
     const [loading, setLoading] = useState(false);
@@ -44,9 +45,9 @@ export default function SignIn() {
     return (
         <div className="flex gap-2 min-h-[calc(100vh-4rem)] items-center justify-center bg-white p-4">
             <Card className="w-full max-w-md border-gray-200 shadow-lg">
-                <CardHeader className="space-y-1 md:mb-5">
+                <CardHeader className="space-y-1 md: mb-2">
                     <CardTitle className="text-2xl font-bold text-black">
-                        Sign In
+                        Log In
                     </CardTitle>
                     <CardDescription className="text-gray-600">
                         Sign in to your account to get started.
@@ -85,12 +86,12 @@ export default function SignIn() {
                             />
                         </div>
                     </CardContent>
-                    <CardFooter className="flex flex-col space-y-4">
+                    <CardFooter className="flex flex-col space-y-4 md:mt-22">
                         <Button 
                         type="submit" 
                         className="w-full bg-primary hover:bg-primary/90"
                         disabled={loading}>
-                            {loading ? "Signing In..." : "Sign In"}
+                            {loading ? "Signing In..." : "Log In"}
                         </Button>
                         <p className="text-center text-sm text-gray-600">
                             Don&apos;t have an account? {" "}
@@ -105,14 +106,19 @@ export default function SignIn() {
                 </form>
             </Card>
             {/* Right Side: Dashboard Preview */}
-            <div className="relative hidden md:block w-full max-w-md flex-1 overflow-hidden rounded-xl border border-gray-200 shadow-lg min-h-88">
+            <div className="relative hidden md:block overflow-hidden rounded-lg border border-gray-200 shadow-xl">
+                {isPreviewLoading && (
+                    <div className="absolute inset-0 z-10 animate-pulse bg-slate-100">
+                        <div className="h-full w-full bg-linear-to-br from-slate-100 via-slate-200 to-slate-100" />
+                    </div>
+                )}
                 <Image
                     src="/hero-images/hero2.png"
                     alt="Dashboard Preview"
-                    fill
-                    className="object-contain object-center"
-                    sizes="(max-width: 768px) 100vw, 50vw"
-                    priority
+                    height={600}
+                    width={800}
+                    onLoad={() => setIsPreviewLoading(false)}
+                    className={`transition-opacity duration-300 ${isPreviewLoading ? "opacity-0" : "opacity-100"}`}
                 />
             </div>
         </div>

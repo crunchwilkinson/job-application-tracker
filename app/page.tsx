@@ -11,10 +11,10 @@ export default function Home() {
       {/** Hero Section */}
       <section className="container mx-auto px-4 py-32">
         <div className="mx-auto max-w-4xl text-center">
-          <h1 className="mb-6 text-3xl font-bold leading-tight text-foreground sm:text-5xl lg:text-6xl">
+          <h1 className="mb-6 text-3xl font-bold leading-tight text-foreground md:text-5xl lg:text-6xl">
             A better way to track your job applications.
           </h1>
-          <p className="text-muted-foreground mb-10 text-sm sm:text-lg">
+          <p className="text-muted-foreground mb-10 text-sm md:text-lg">
             Capture, organize, and manage your job search in one place.
           </p>
           <div className="flex flex-col items-center gap-4">
@@ -42,11 +42,11 @@ export default function Home() {
                   <div className="inline-flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10">
                     <Briefcase className="h-6 w-6 text-primary" />
                   </div>
-                  <h3 className="text-xl sm:text-2xl font-semibold text-black">
+                  <h3 className="text-xl md:text-2xl font-semibold text-black">
                     Organize Applications
                   </h3>
                 </div>
-                <p className="text-muted-foreground text-sm sm:text-lg">
+                <p className="text-muted-foreground text-sm md:text-lg">
                   Create custom boards and columns to track your job
                   applications at every stage of the process.
                 </p>
@@ -56,11 +56,11 @@ export default function Home() {
                   <div className="inline-flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10">
                     <TrendingUp className="h-6 w-6 text-primary" />
                   </div>
-                  <h3 className="text-xl sm:text-2xl font-semibold text-black">
+                  <h3 className="text-xl md:text-2xl font-semibold text-black">
                     Track Progress
                   </h3>
                 </div>
-                <p className="text-muted-foreground text-sm sm:text-lg">
+                <p className="text-muted-foreground text-sm md:text-lg">
                   Monitor your application status from applied to interview to
                   offer with visual Kanban boards.
                 </p>
@@ -70,11 +70,11 @@ export default function Home() {
                   <div className="inline-flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10">
                     <CheckCircle2 className="h-6 w-6 text-primary" />
                   </div>
-                  <h3 className="text-xl sm:text-2xl font-semibold text-black">
+                  <h3 className="text-xl md:text-2xl font-semibold text-black">
                     Stay Organized
                   </h3>
                 </div>
-                <p className="text-muted-foreground text-sm sm:text-lg">
+                <p className="text-muted-foreground text-sm md:text-lg">
                   Never lose track of an application. Keep all your job search
                   information in one centralized place.
                 </p>
