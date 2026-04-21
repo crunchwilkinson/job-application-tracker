@@ -6,9 +6,7 @@ import { Briefcase, CheckCircle2, TrendingUp } from "lucide-react";
 
 export default function Home() {
   return (
-  <div className="flex min-h-screen flex-col bg-background text-foreground">
-    <main className="flex-1">
-      {/** Hero Section */}
+    <>
       <section className="container mx-auto px-4 py-32">
         <div className="mx-auto max-w-4xl text-center">
           <h1 className="mb-6 text-3xl font-bold leading-tight text-foreground md:text-5xl lg:text-6xl">
@@ -30,10 +28,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Hero Images Section with Tabs */}
       <ImageTabs />
 
-       {/* Features Section */}
         <section className="border-t bg-white py-24">
           <div className="container mx-auto px-4">
             <div className="grid gap-12 md:grid-cols-3">
@@ -82,7 +78,6 @@ export default function Home() {
             </div>
           </div>
         </section>
-    </main>
-  </div>
+    </>
   );    
 }

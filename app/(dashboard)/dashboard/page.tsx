@@ -36,7 +36,6 @@ async function DashboardPage() {
     }
 
     return (
-        <div className="min-h-screen bg-white">
             <div className="container mx-auto p-6">
                 <div className="mb-6">
                     <h1 className="text-3xl font-bold text-black">
@@ -48,13 +47,11 @@ async function DashboardPage() {
                 </div>
                 <KanbanBoard board={board} userId={session.user.id} />
             </div>
-        </div>
     );
 }
 
 function DashboardSkeleton() {
     return (
-        <div className="min-h-screen bg-white">
             <div className="container mx-auto p-6">
                 <div className="mb-6 space-y-3">
                     <div className="h-9 w-64 animate-pulse rounded-md bg-gray-200" />
@@ -82,7 +79,6 @@ function DashboardSkeleton() {
                     ))}
                 </div>
             </div>
-        </div>
     );
 }
 
