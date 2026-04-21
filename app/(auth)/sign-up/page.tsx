@@ -4,16 +4,16 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import Link from "next/link";
-import { useState } from "react";
+import { useState} from "react";
 import { signUp } from "@/lib/auth/auth-cient";
 import { useRouter } from "next/navigation";
-import Image from "next/image";
+import { DashboardPreview } from "@/components/DashboardPreview";
 
 export default function SignUp() {
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [isPreviewLoading, setIsPreviewLoading] = useState(true);
+
 
     const [error, setError] = useState("");
     const [loading, setLoading] = useState(false);
@@ -45,7 +45,7 @@ export default function SignUp() {
         }
     }
     return (
-        <div className="flex gap-2 min-h-[calc(100vh-4rem)] items-center justify-center bg-white p-4">
+        <>
             <Card className="w-full max-w-md border-gray-200 shadow-lg">
                 <CardHeader className="space-y-1 md: mb-2">
                     <CardTitle className="text-2xl font-bold text-black">
@@ -123,22 +123,7 @@ export default function SignUp() {
                     </CardFooter>
                 </form>
             </Card>
-            {/* Right Side: Dashboard Preview */}
-            <div className="relative hidden md:block overflow-hidden rounded-lg border border-gray-200 shadow-xl">
-                {isPreviewLoading && (
-                    <div className="absolute inset-0 z-10 animate-pulse bg-slate-100">
-                        <div className="h-full w-full bg-linear-to-br from-slate-100 via-slate-200 to-slate-100" />
-                    </div>
-                )}
-                <Image
-                    src="/hero-images/hero2.png"
-                    alt="Dashboard Preview"
-                    height={600}
-                    width={800}
-                    onLoad={() => setIsPreviewLoading(false)}
-                    className={`transition-opacity duration-300 ${isPreviewLoading ? "opacity-0" : "opacity-100"}`}
-                />
-            </div>
-        </div>
+            <DashboardPreview />
+        </>
     );
 }
